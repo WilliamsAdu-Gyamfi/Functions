@@ -20,3 +20,14 @@ const checkIn = function (flightNum, passenger) {
 checkIn(flight, williams);
 console.log(flight);
 console.log(williams);
+
+const flightNum = flight;
+const passenger = williams;
+
+// TWO FUNCTIONS MANUPULATING THE SAME OBJCT
+//How interactions of different functions with the same object can create an issue
+const newPassport = function (student) {
+  student.passport = Math.trunc(Math.random() * 500);
+};
+newPassport(williams);
+checkIn(flight, williams);
