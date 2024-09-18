@@ -1,19 +1,19 @@
-'use strict';
+"use strict";
 
-const flight = 'AB123';
+const flight = "AB123";
 const williams = {
-  name: 'Williams Gyamfi',
+  name: "Williams Gyamfi",
   passport: 25364547,
 };
 
 const checkIn = function (flightNum, passenger) {
-  flightNum = 'AB234';
-  passenger.name = 'Mr.' + passenger.name;
+  flightNum = "AB234"; //to check whether the flight could change
+  passenger.name = "Mr." + passenger.name;
 
   if (passenger.passport === 25364547) {
-    alert('Checked In');
+    alert("Checked In");
   } else {
-    alert('Wrong Details');
+    alert("Wrong Details");
   }
 };
 
@@ -31,3 +31,10 @@ const newPassport = function (student) {
 };
 newPassport(williams);
 checkIn(flight, williams);
+
+//CALLBACK FUNCTION
+const greetings = function () {
+  console.log("🤝");
+};
+document.body.addEventListener("click", greetings);
+["Williams", "Adu", "Gyamfi"].forEach(greetings);
