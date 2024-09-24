@@ -59,3 +59,46 @@ const greet = greeting => name => console.log(`${greeting} ${name}`);
 const person = greet("Hi");
 person("Williams");
 person("Gyamfi");
+
+const ghana = {
+  airline: "Ghana Airline",
+  code: "GH",
+  booking: [],
+  book: function (flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.code}${flightNum}`
+    );
+    this.booking.push({
+      flight: `${name} booked a seat on ${this.airline} flight ${this.code}${flightNum}`,
+    });
+  },
+};
+ghana.book(123, "Williams");
+console.log(ghana);
+
+//let's asume we have a different a airline but we want to use the book function without hard-coding(DON'T repeat yourself principle)
+
+const nigeria = {
+  airline: "GhanaNigeer Airline",
+  code: "GHA",
+  booking: [],
+};
+
+const book = ghana.book; //This is the solution
+
+book.call(nigeria, 45, "Patience"); // calling the function
+console.log(nigeria);
+book.call(ghana, 45, "Charles");
+console.log(ghana);
+
+const ghana3 = {
+  airline: "Ghana3 Airline",
+  code: "GH3",
+  booking: [],
+};
+book.call(ghana3, 50, "John");
+console.log(ghana3);
+
+//Apply Method
+const flightInfo = [90, "Johua"];
+book.call(ghana3, ...flightInfo);
