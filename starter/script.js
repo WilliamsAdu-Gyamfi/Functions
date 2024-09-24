@@ -102,3 +102,60 @@ console.log(ghana3);
 //Apply Method
 const flightInfo = [90, "Johua"];
 book.call(ghana3, ...flightInfo);
+
+//BIND METHOD
+//book.call(ghana3, 50, "John");
+const newGhana3 = book.bind(ghana3);
+newGhana3(90, "Albert");
+const newNigeria = book.bind(nigeria);
+newNigeria(10, "Joe");
+
+const newGhana3A = book.bind(ghana3, 1000); //overwriting flightNum
+newGhana3A("Joeseph");
+
+ghana.planes = 100;
+ghana.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector(".buy")
+  .addEventListener("click", ghana.buyPlane.bind(ghana));
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+//small challenge
+/*
+  const greet = function (greeting) {
+    return function (name) {
+      console.log(`${greeting} ${name}`);
+    };
+  };
+  
+  const person = greet("Hi");
+  person("Williams");
+  
+  //OR
+  greet("Hi")("Williams");
+  */
+
+//WITHOUT USING THE BIND METHOD(USING FUNCTIONS RETURNING FUNTIONS)
+const addTax2 = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTax.bind(0.23);
+
+console.log(addVAT(100));
+console.log(addVAT(23));
