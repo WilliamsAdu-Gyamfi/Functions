@@ -17,9 +17,9 @@ const checkIn = function (flightNum, passenger) {
   }
 };
 
-checkIn(flight, williams);
-console.log(flight);
-console.log(williams);
+//checkIn(flight, williams);
+//console.log(flight);
+//console.log(williams);
 
 const flightNum = flight;
 const passenger = williams;
@@ -29,12 +29,33 @@ const passenger = williams;
 const newPassport = function (student) {
   student.passport = Math.trunc(Math.random() * 500);
 };
-newPassport(williams);
-checkIn(flight, williams);
+//newPassport(williams);
+//checkIn(flight, williams);
 
+/*
 //CALLBACK FUNCTION
 const greetings = function () {
   console.log("🤝");
 };
 document.body.addEventListener("click", greetings);
 ["Williams", "Adu", "Gyamfi"].forEach(greetings);
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const person = greet("Hi");
+person("Williams");
+
+//OR
+greet("Hi")("Williams");
+*/
+
+// small challenge(writing the same function using only arrow fumction)
+const greet = greeting => name => console.log(`${greeting} ${name}`);
+
+const person = greet("Hi");
+person("Williams");
+person("Gyamfi");
