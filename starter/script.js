@@ -225,4 +225,34 @@ const poll = {
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
   // This generates [0, 0, 0, 0]. More in the next section!
   answers: new Array(4).fill(0),
+  regiterNewAnswer: Number(
+    prompt("What is your favourite programming language")
+  ),
 };
+
+if (poll.regiterNewAnswer === 0) {
+  console.log("JavaScript");
+} else if (poll.regiterNewAnswer === 1) {
+  console.log("Python");
+} else if (poll.regiterNewAnswer === 2) {
+  console.log("Rust");
+} else if (poll.regiterNewAnswer === 3) {
+  console.log("c++");
+} else {
+  console.log("Anwer does not exit");
+}
+
+/*
+ghana.planes = 100;
+ghana.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+
+document
+  .querySelector(".buy")
+  .addEventListener("click", ghana.buyPlane.bind(ghana));
+*/
+
+document.querySelector(".poll").addEventListener("click", function () {});
