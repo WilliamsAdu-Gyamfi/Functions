@@ -225,34 +225,36 @@ const poll = {
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
   // This generates [0, 0, 0, 0]. More in the next section!
   answers: new Array(4).fill(0),
-  regiterNewAnswer: Number(
-    prompt("What is your favourite programming language")
-  ),
+  // Method to register a new answer
+  registerNewAnswer() {
+    // Display the prompt window to the user
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+      )
+    );
+
+    // Check if the input is a valid number and falls within the options range
+    if (!isNaN(answer) && answer >= 0 && answer < this.answers.length) {
+      this.answers[answer]++;
+      this.displayResults();
+      this.displayResults("string");
+    } else {
+      alert("Invalid input. Please enter a valid option number.");
+    }
+  },
+
+  // Method to display poll results
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers);
+    } else if (type === "string") {
+      console.log(`Poll results are: ${this.answers.join(", ")}`);
+    }
+  },
 };
 
-if (poll.regiterNewAnswer === 0) {
-  console.log("JavaScript");
-} else if (poll.regiterNewAnswer === 1) {
-  console.log("Python");
-} else if (poll.regiterNewAnswer === 2) {
-  console.log("Rust");
-} else if (poll.regiterNewAnswer === 3) {
-  console.log("c++");
-} else {
-  console.log("Anwer does not exit");
-}
-
-/*
-ghana.planes = 100;
-ghana.buyPlane = function () {
-  console.log(this);
-
-  this.planes++;
-  console.log(this.planes);
-
+// Create a button in your HTML
 document
-  .querySelector(".buy")
-  .addEventListener("click", ghana.buyPlane.bind(ghana));
-*/
-
-document.querySelector(".poll").addEventListener("click", function () {});
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));
