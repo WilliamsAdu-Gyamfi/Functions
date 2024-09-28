@@ -233,6 +233,7 @@ const poll = {
         `${this.question}\n${this.options.join("\n")}\n(Write option number)`
       )
     );
+    console.log(answer);
 
     // Check if the input is a valid number and falls within the options range
     if (!isNaN(answer) && answer >= 0 && answer < this.answers.length) {
@@ -258,3 +259,13 @@ const poll = {
 document
   .querySelector(".poll")
   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+// Bonus: Test data arrays
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+
+// Using 'displayResults' with external test data
+poll.displayResults.call({ answers: testData1 }, "array");
+poll.displayResults.call({ answers: testData1 }, "string");
+poll.displayResults.call({ answers: testData2 }, "array");
+poll.displayResults.call({ answers: testData2 }, "string");
