@@ -309,3 +309,56 @@ bookNow(); //1 passenger(s)
 bookNow(); //2 passenger(s)
 bookNow(); //3 passenger(s)
 bookNow(); //4 passenger(s)
+
+/*
+Coding Challenge #2
+This is more of a thinking challenge than a coding challenge �
+Your tasks:
+1. Take the IIFE below and at the end of the function, attach an event listener that 
+changes the color of the selected h1 element ('header') to blue, each time 
+the body element is clicked. Do not select the h1 element again!
+2. And now explain to yourself (or someone around you) why this worked! Take all 
+the time you need. Think about when exactly the callback function is executed, 
+and what that means for the variables involved in this example.
+ (function () {
+ const header = document.querySelector('h1');
+ header.style.color = 'red';
+ })()
+ */
+
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+
+  // Attach an event listener to the body element
+  document.body.addEventListener("click", function () {
+    header.style.color = "blue"; // Change the color of the h1 element to blue
+  });
+})();
+
+//EXPLANATION
+/*
+1. Understanding IIFE (Immediately Invoked Function Expression)
+An IIFE is a function that is executed immediately after it's defined. In our example:
+
+The code inside the IIFE runs immediately, so header is selected and its color is initially set to red.
+2. Event Listener Attachment
+The line document.body.addEventListener('click', function () { ... }) attaches a click event listener to the body element.
+This means that whenever you click anywhere on the body of the page, the function provided as the second argument will be executed.
+3. When the Callback Function is Executed
+The callback function function () { header.style.color = 'blue'; } does not run immediately. Instead, it runs only when the body is clicked.
+When the body is clicked, the browser executes the callback function and changes the header color to blue.
+4. Why This Works
+Closure: A closure is created when a function retains access to its lexical scope (the environment in which it was declared), even after that outer function has finished executing.
+In this case, even though the IIFE has completed its execution, the callback function still has access to the header variable. This is because the header variable is within the scope of the IIFE, and thanks to closures, the callback retains access to this variable.
+5. Key Points
+The header element is only selected once when the IIFE runs, and its reference is stored in the header variable.
+The addEventListener function attaches the click event to body, but it doesn’t execute the callback immediately. It simply registers it to run later, upon a click event.
+When you click the body, the registered callback is executed, and it accesses header from the closure, changing its color to blue.
+Summary
+The code works because:
+
+The header variable is declared and set in the IIFE's scope.
+The callback function forms a closure, retaining access to the header variable even after the IIFE completes.
+Thus, when the body is clicked, the callback can still change header's color, making the code efficient and avoiding unnecessary re-selection of the h1 element.
+*/
