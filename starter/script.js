@@ -292,3 +292,20 @@ conole.log("Only once")
 (function () {
   console.log("Only once");
 })(); // () ➡️ at the end of the function expression to call it
+
+//CLOSURES
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passenger(s)`);
+  };
+};
+
+const bookNow = secureBooking();
+
+bookNow(); //1 passenger(s)
+bookNow(); //2 passenger(s)
+bookNow(); //3 passenger(s)
+bookNow(); //4 passenger(s)
