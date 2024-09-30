@@ -88,7 +88,7 @@ const book = ghana.book; //This is the solution
 
 book.call(nigeria, 45, "Patience"); // calling the function
 console.log(nigeria);
-book.call(ghana, 45, "Charles");
+book.call(ghana, 45, "Charles"); // calling the function
 console.log(ghana);
 
 const ghana3 = {
@@ -96,7 +96,7 @@ const ghana3 = {
   code: "GH3",
   booking: [],
 };
-book.call(ghana3, 50, "John");
+book.call(ghana3, 50, "John"); // calling the function
 console.log(ghana3);
 
 //Apply Method
@@ -269,3 +269,26 @@ poll.displayResults.call({ answers: testData1 }, "array");
 poll.displayResults.call({ answers: testData1 }, "string");
 poll.displayResults.call({ answers: testData2 }, "array");
 poll.displayResults.call({ answers: testData2 }, "string");
+
+//IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
+const runOnce = function () {
+  console.log("Only once");
+};
+runOnce();
+//Creating a function without assiging to any variable
+/*
+function(){
+conole.log("Only once")
+}
+*/ //THIS WILL NOT WORK
+
+//HOW TO MAKE IT WORK
+//by wrapping it with paranthesis ➡️ () and at the same time calling
+(function () {
+  conole.log("Only once");
+});
+
+//calling it
+(function () {
+  console.log("Only once");
+})(); // () ➡️ at the end of the function expression to call it
